@@ -38,11 +38,11 @@
 
 #include <syslog.h>
 #include <glib.h>
-#include <cjson/json.h>
+#include <json.h>
 
 #include "wait.h"
 #include "main.h"
-#include "debug.h"
+#include "powerd_debug.h"
 #include "suspend.h"
 #include "logging.h"
 #include "lunaservice_utils.h"

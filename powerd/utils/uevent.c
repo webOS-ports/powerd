@@ -33,7 +33,7 @@
 #include <glib.h>
 
 #include "uevent.h"
-#include "debug.h"
+#include "powerd_debug.h"
 
 static gboolean
 ChangeGIOHelper(GIOChannel *source, GIOCondition condition, gpointer ctx)

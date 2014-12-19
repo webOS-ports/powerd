@@ -28,11 +28,11 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <glib.h>
-#include <cjson/json.h>
+#include <json.h>
 #include <luna-service2/lunaservice.h>
 
 #include "init.h"
-#include "debug.h"
+#include "powerd_debug.h"
 #include "logging.h"
 #include "main.h"
 #include "battery.h"

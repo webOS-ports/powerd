@@ -35,7 +35,7 @@
 #include <glib.h>
 
 #include "logging.h"
-#include "debug.h"
+#include "powerd_debug.h"
 
 #define LOG_DOMAIN "sysfs:"
 

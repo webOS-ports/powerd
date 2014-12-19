@@ -22,7 +22,7 @@
 #include <string.h>
 
 #include "init.h"
-#include "debug.h"
+#include "powerd_debug.h"
 
 typedef struct _GNamedHookList
 {

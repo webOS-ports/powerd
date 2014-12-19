@@ -25,7 +25,7 @@
 #include <luna-service2/lunaservice.h>
 
 #include "init.h"
-#include "debug.h"
+#include "powerd_debug.h"
 
 void _PowerdClientIPCRun(void);
 void _PowerdClientIPCStop(void);

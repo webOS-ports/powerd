@@ -28,7 +28,7 @@ file(GLOB SOURCE_FILES alarms/* charging/* suspend/* utils/* *.c)
 webos_configure_source_files(SOURCE_FILES config.c timesaver.c)
 
 add_executable(powerd ${SOURCE_FILES})
-target_link_libraries(powerd ${GLIB2_LDFLAGS} ${LUNASERVICE2_LDFLAGS} ${CJSON_LDFLAGS} ${NYXLIB_LDFLAGS} pthread rt)
+target_link_libraries(powerd ${GLIB2_LDFLAGS} ${LUNASERVICE2_LDFLAGS} ${JSON_LDFLAGS} ${NYXLIB_LDFLAGS} pthread rt)
 
 webos_build_daemon()
 webos_build_system_bus_files()
