@@ -32,7 +32,7 @@
 #include <stdlib.h>
 
 #include <syslog.h>
-#include <cjson/json.h>
+#include <json.h>
 
 #include "utils/sysfs.h"
 
@@ -42,7 +42,7 @@
 #include "clock.h"
 #include "config.h"
 #include "wait.h"
-#include "debug.h"
+#include "powerd_debug.h"
 #include "main.h"
 #include "timesaver.h"
 #include "timersource.h"

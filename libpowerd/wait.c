@@ -33,7 +33,7 @@
 
 #include "wait.h"
 #include "clock.h"
-#include "debug.h"
+#include "powerd_debug.h"
 
 #if !defined(_GNU_SOURCE)
 #endif
