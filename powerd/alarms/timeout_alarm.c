@@ -126,7 +126,7 @@ alarms_timeout_subscribe_cb(LSHandle *sh, LSMessage *message, void *ctx)
 
 	const char *payload = LSMessageGetPayload(message);
 	struct json_object *object = json_tokener_parse(payload);
-	if (is_error(object))
+	if (!object)
 	{
 		POWERDLOG(LOG_CRIT,"%s: invalid json from sleep daemon",__func__);
 	}
@@ -169,7 +169,7 @@ alarms_timeout_subscribe_cb(LSHandle *sh, LSMessage *message, void *ctx)
 		free(alrm_ctx);
 	}
 
-	if (!is_error(object)) json_object_put(object);
+	if (object) json_object_put(object);
 
     return true;
 }
@@ -211,7 +211,7 @@ alarmAddCalendar(LSHandle *sh, LSMessage *message, void *ctx)
 	struct json_object *object=NULL;
 
 	object = json_tokener_parse(LSMessageGetPayload(message));
-	if ( is_error(object) )
+	if ( !object )
 	{
 		goto malformed_json;
 	}
@@ -245,7 +245,7 @@ error:
 	POWERDLOG(LOG_ERR,"Failed to allocate memory");
 	LSMessageReplyErrorUnknown(sh, message);
 cleanup:
-	if (!is_error(object)) json_object_put(object);
+	if (object) json_object_put(object);
 	return true;
 
 }
@@ -260,7 +260,7 @@ alarmAdd(LSHandle *sh, LSMessage *message, void *ctx)
 	struct json_object *object = NULL;
 
 	object = json_tokener_parse(LSMessageGetPayload(message));
-	if ( is_error(object) )
+	if ( !object )
 	{
 		goto malformed_json;
 	}
@@ -294,7 +294,7 @@ error:
 	POWERDLOG(LOG_ERR,"Failed to allocate memory");
 	LSMessageReplyErrorUnknown(sh, message);
 cleanup:
-	if (!is_error(object)) json_object_put(object);
+	if (object) json_object_put(object);
 	return true;
 }
 

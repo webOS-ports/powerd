@@ -155,7 +155,7 @@ bool resumeSignal(LSHandle *sh,
 	int resumetype;
 
 	struct json_object *object = json_tokener_parse(LSMessageGetPayload(message));
-	if (is_error(object)) goto out;
+	if (!object) goto out;
 
 	bool registration = json_object_get_boolean(
 						 json_object_object_get(object, "returnValue"));
@@ -170,7 +170,7 @@ bool resumeSignal(LSHandle *sh,
 		_ParseWakeupSources(resumetype);
 	}
 out:
-	if (!is_error(object)) json_object_put(object);
+	if (object) json_object_put(object);
 
 	return true;
 }
@@ -179,7 +179,7 @@ bool suspendedSignal(LSHandle *sh,
                    LSMessage *message, void *user_data)
 {
 	struct json_object *object = json_tokener_parse(LSMessageGetPayload(message));
-	if (is_error(object)) goto out;
+	if (!object) goto out;
 
 	bool registration = json_object_get_boolean(
 						 json_object_object_get(object, "returnValue"));
@@ -190,7 +190,7 @@ bool suspendedSignal(LSHandle *sh,
 	battery_set_wakeup_percentage(false,true);
 
 out:
-	if (!is_error(object)) json_object_put(object);
+	if (object) json_object_put(object);
 
 	return true;
 }

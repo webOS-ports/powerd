@@ -469,7 +469,7 @@ _ClientBatteryStatusCallback(LSHandle *sh, LSMessage *message, void *ctx)
 
     const char *payload = LSMessageGetPayload(message);
     struct json_object *object = json_tokener_parse(payload);
-    if (is_error(object)) {
+    if (!object) {
      	goto end;
     }
 
@@ -494,7 +494,7 @@ _ClientBatteryStatusCallback(LSHandle *sh, LSMessage *message, void *ctx)
                 (percent, temp_C, current_mA, voltage_mV);
 
 end:
-	if (!is_error(object)) json_object_put(object);
+	if (object) json_object_put(object);
     return true;
 }
 
@@ -557,7 +557,7 @@ _identify_callback(LSHandle *sh, LSMessage *msg, void *ctx)
 {
     struct json_object * object =
                 json_tokener_parse(LSMessageGetPayload(msg));
-    if (is_error(object)) goto error;
+    if (!object) goto error;
 
     bool subscribed = json_object_get_boolean(
             json_object_object_get(object, "subscribed"));
@@ -593,7 +593,7 @@ _identify_callback(LSHandle *sh, LSMessage *msg, void *ctx)
 
 error:
 end:
-    if (!is_error(object)) json_object_put(object);
+    if (object) json_object_put(object);
     return true;
 }
 
@@ -612,7 +612,7 @@ _powerd_server_up(LSHandle *sh, LSMessage *msg, void *ctx)
     bool connected;
 
     struct json_object *object = json_tokener_parse(LSMessageGetPayload(msg));
-    if (is_error(object)) goto error;
+    if (!object) goto error;
 
     connected = json_object_get_boolean(
                 json_object_object_get(object, "connected"));
@@ -630,7 +630,7 @@ _powerd_server_up(LSHandle *sh, LSMessage *msg, void *ctx)
     }
 
 end:
-    if (!is_error(object)) json_object_put(object);
+    if (object) json_object_put(object);
     return true;
 
 error:

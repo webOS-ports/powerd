@@ -146,7 +146,7 @@ identifyCallback(LSHandle *sh, LSMessage *message, void *data)
 	               LSMessageGetPayload(message), suspend_ipc_method_cb,(void *)message, NULL, NULL);
 
 	struct json_object *object = json_tokener_parse(LSMessageGetPayload(message));
-	if ( is_error(object) ) {
+	if ( !object ) {
 		goto out;
 	}
 
@@ -157,7 +157,7 @@ identifyCallback(LSHandle *sh, LSMessage *message, void *data)
 		LSSubscriptionAdd(sh, "PowerdClients", message, NULL);
 	}
 out:
-	if (!is_error(object)) json_object_put(object);
+	if (object) json_object_put(object);
 
 	return true;
 }

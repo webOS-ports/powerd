@@ -355,7 +355,7 @@ fakeBatteryStatus(LSHandle *sh,
 
     const char *payload = LSMessageGetPayload(message);
     struct json_object *object = json_tokener_parse(payload);
-    if (is_error(object)) {
+    if (!object) {
     	goto end;
     }
 
@@ -387,7 +387,7 @@ fakeBatteryStatus(LSHandle *sh,
         current_mA, voltage_mV);
 
 end:
-    if (!is_error(object)) json_object_put(object);
+    if (object) json_object_put(object);
     return true;
 }
 
