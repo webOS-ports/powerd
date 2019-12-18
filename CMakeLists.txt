@@ -55,3 +55,5 @@ include_directories(include/internal include/public/powerd)
 
 add_subdirectory(libpowerd)
 add_subdirectory(powerd)
+
+webos_build_system_bus_files()

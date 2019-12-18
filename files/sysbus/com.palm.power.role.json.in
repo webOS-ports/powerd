@@ -1,9 +1,7 @@
 {
-    "role": {
-        "exeName":"@WEBOS_INSTALL_SBINDIR@/powerd",
-        "type": "regular",
-        "allowedNames": ["com.palm.power",""]
-    },
+    "exeName":"@WEBOS_INSTALL_SBINDIR@/powerd",
+    "type": "regular",
+    "allowedNames": ["com.palm.power",""],
     "permissions": [
         {
             "service":"com.palm.power",
