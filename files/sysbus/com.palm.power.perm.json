@@ -1,5 +1,8 @@
 {
     "com.palm.power": [
-        "devices"
+        "devices",
+        "system",
+        "activities.manage",
+        "signals.all"
     ]
 }
