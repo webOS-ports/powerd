@@ -40,7 +40,7 @@
 
 #include "init.h"
 #include "clock.h"
-#include "config.h"
+#include "powerd_config.h"
 #include "wait.h"
 #include "powerd_debug.h"
 #include "main.h"

@@ -36,7 +36,7 @@
 #include "logging.h"
 #include "main.h"
 #include "battery.h"
-#include "config.h"
+#include "powerd_config.h"
 #include "sysfs.h"
 
 #define LOG_DOMAIN "BATTERY_IPC: "

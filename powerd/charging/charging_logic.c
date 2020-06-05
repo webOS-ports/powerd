@@ -31,7 +31,7 @@
 #include "battery.h"
 #include "batterypoll.h"
 #include "init.h"
-#include "config.h"
+#include "powerd_config.h"
 #include "clock.h"
 #include "logging.h"
 #include "suspend.h"

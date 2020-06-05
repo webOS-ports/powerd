@@ -40,7 +40,7 @@
 #include "batterypoll.h"
 #include "charging_logic.h"
 #include "batterypoll.h"
-#include "config.h"
+#include "powerd_config.h"
 
 #define LOG_DOMAIN "CHG: "
 

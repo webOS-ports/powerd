@@ -50,7 +50,7 @@
 #include <glib.h>
 
 #include "common.h"
-#include "config.h"
+#include "powerd_config.h"
 #include "battery.h"
 #include "batterypoll.h"
 

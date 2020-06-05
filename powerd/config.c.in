@@ -38,7 +38,7 @@
 #include <unistd.h>
 #include <luna-service2/lunaservice.h>
 
-#include "config.h"
+#include "powerd_config.h"
 #include "init.h"
 
 
