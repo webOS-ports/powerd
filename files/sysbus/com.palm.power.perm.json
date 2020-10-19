@@ -3,6 +3,7 @@
         "devices",
         "system",
         "activities.manage",
-        "signals.all"
+        "signals.all",
+        "sleep.internal"
     ]
 }
