@@ -125,7 +125,7 @@ chargerStatusQuery(LSHandle *sh,
 
 bool charger_changed = false;
 
-void sendChargerStatus(void)
+void sendChargerStatus(bool bOnlyIfChanged)
 {
 	nyx_charger_status_t status;
 	if(!nyxDev)
@@ -137,7 +137,8 @@ void sendChargerStatus(void)
 	}
 	POWERDLOG(LOG_DEBUG,"In %s connected : %d:%d, powered : %d:%d",__func__,currStatus.connected,status.connected,currStatus.powered,status.powered);
 
-	if(currStatus.connected != status.connected || currStatus.powered != status.powered)
+	if(!bOnlyIfChanged || 
+	   (currStatus.connected != status.connected || currStatus.powered != status.powered))
 	{
 		LSError lserror;
 		LSErrorInit(&lserror);
@@ -179,7 +180,8 @@ void sendChargerStatus(void)
 		}
 		g_free(payload);
 	}
-	if(currStatus.connected != status.connected)
+	if(!bOnlyIfChanged ||
+	   currStatus.connected != status.connected)
 	{
 	    char *payload = g_strdup_printf("{\"connected\":%s}",
 	    		status.connected ? "true" : "false");
@@ -210,7 +212,7 @@ void sendChargerStatus(void)
 
 void notifyChargerStatus(nyx_device_handle_t handle, nyx_callback_status_t status, void* data)
 {
-	sendChargerStatus();
+	sendChargerStatus(true);
 }
 
 void notifyStateChange(nyx_device_handle_t handle, nyx_callback_status_t status, void* data)
@@ -230,7 +232,7 @@ bool
 chargerStatusQuerySignal(LSHandle *sh,
                    LSMessage *message, void *user_data)
 {
-	sendChargerStatus();
+	sendChargerStatus(false);
 	return true;
 }
 
